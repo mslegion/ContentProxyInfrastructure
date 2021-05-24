@@ -12,5 +12,5 @@ variable "server_port" {
 variable "dummy_port" {
   description = "The port the proxy server will use for web traffic"
   type        = number
-  default     = 9000
+  default     = 900
 }
