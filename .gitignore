@@ -3,3 +3,4 @@
 */.terraform/
 */.terraform.lock.hcl
 /deployment/ubuntu_server_kp.pem
+/deployment/secrets.json

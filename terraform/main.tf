@@ -45,4 +45,8 @@ resource "aws_instance" "ubuntu_server" {
   instance_type = "t2.micro"
   key_name = aws_key_pair.deployer.key_name
   security_groups = [aws_security_group.proxy.name, aws_security_group.ssh.name, aws_security_group.all_outbound.name]
+
+  tags = {
+    Name = "ProxyServer"
+  }
 }
