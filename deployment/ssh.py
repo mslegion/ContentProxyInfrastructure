@@ -24,13 +24,12 @@ class SSHClient:
         except Exception as e:
             raise Exception(f"Trouble connecting to server: {e}")
 
-    def execute_command(self, cmd, prompt=None):
+    def execute_command(self, cmd, prompt=None, timeout=5):
         stdin, stdout, stderr = self.client.exec_command(cmd)
-        time.sleep(5)
         if prompt:
             stdin.write(f"{prompt}\n")
             stdin.flush()
-            time.sleep(5)
+            time.sleep(timeout)
         out, err = stdout.read().decode("utf-8"), stderr.read().decode("utf-8")
         return out, err
 
