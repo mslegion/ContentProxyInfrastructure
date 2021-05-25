@@ -1,5 +1,5 @@
 /venv/
 .idea
-/.terraform/
-/.terraform.lock.hcl
-/terraform/.terraform.lock.hcl
+*/.terraform/
+*/.terraform.lock.hcl
+/deployment/ubuntu_server_kp.pem
