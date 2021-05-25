@@ -55,5 +55,5 @@ resource "aws_instance" "ubuntu_server" {
   ami = "ami-00399ec92321828f5"
   instance_type = "t2.micro"
   key_name = aws_key_pair.deployer.key_name
-  security_groups = [aws_security_group.proxy.name, aws_security_group.ssh.name, aws_security_group.all_outbound.name]
+  security_groups = [aws_security_group.proxy.name, aws_security_group.ssh.name, aws_security_group.all_outbound.name, aws_security_group.dummy_outbound.name]
 }
