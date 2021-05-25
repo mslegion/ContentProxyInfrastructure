@@ -8,3 +8,9 @@ variable "server_port" {
   type        = number
   default     = 8080
 }
+
+variable "ssh_port" {
+  description = "The ssh port"
+  type        = number
+  default     = 22
+}
