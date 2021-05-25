@@ -35,6 +35,17 @@ resource "aws_security_group" "all_outbound" {
   }
 }
 
+resource "aws_security_group" "dummy_outbound" {
+  name = "allow-dummy-outbound-connections"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_key_pair" "deployer" {
   key_name   = "ubuntu_server_kp"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDxPB9iOo3mlvBcLbvPXSWZZFskU4Ryv4ZuSuNeym406ZPcFdZw5WqjwMQvO6b3ga+ZMssjjv6wcImcaGT7gtnkWSN6SLv/ilFG19klcOne+1MjzNPpg/DZgdufnJhVa27c14I90NqEL9LqqJQzO1SP7umfkgcwg/dOR8P2oB4sgjzTGu5sJ1T18mmsqR1vWakp44JernQB5PktZPqWJydRaMp0ccbplirwXsoP75RC2oIb/j3cJTBnL1oNwZ/aT6C7gSH2GqMbUN9LzgKv9/tXGI46xvIKaVuodWsfvjkFoNYe1Ehaml/hT2WBpaiP80jZeFrUVb57lJ/dWRb5Kvb"
