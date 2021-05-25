@@ -22,5 +22,5 @@ resource "aws_instance" "test-ec2-instance" {
   ami = "ami-00399ec92321828f5"
   instance_type = "t2.micro"
   key_name = aws_key_pair.deployer.key_name
-  security_groups = [aws_security_group.instance.id]
+  security_groups = [aws_security_group.instance.name]
 }

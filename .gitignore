@@ -2,3 +2,4 @@
 .idea
 /.terraform/
 /.terraform.lock.hcl
+/prd/.terraform.lock.hcl
