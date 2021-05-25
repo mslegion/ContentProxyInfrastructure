@@ -12,3 +12,8 @@ output "user_name" {
   value = "ubuntu"
   description = "The username for connecting to the server"
 }
+
+output "aws_region" {
+  value = var.aws_region
+  description = "The region in which the current instance is present"
+}
