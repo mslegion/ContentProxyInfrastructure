@@ -3,6 +3,11 @@ variable "aws_region" {
   default = "us-east-2"
 }
 
+variable "proxy_tag" {
+  type    = string
+  default = "ProxyServer"
+}
+
 variable "images" {
   type = map(string)
 

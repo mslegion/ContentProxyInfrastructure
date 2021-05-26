@@ -47,6 +47,6 @@ resource "aws_instance" "ubuntu_server" {
   security_groups = [aws_security_group.proxy.name, aws_security_group.ssh.name, aws_security_group.all_outbound.name]
 
   tags = {
-    Name = "ProxyServer"
+    Name = var.proxy_tag
   }
 }
