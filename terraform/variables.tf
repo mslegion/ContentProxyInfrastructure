@@ -27,3 +27,9 @@ variable "ssh_port" {
   type        = number
   default     = 22
 }
+
+variable "key_pair_name" {
+  description = "The ssh key pair name used to connect to server"
+  type = string
+  default = "ubuntu_server_kp"
+}

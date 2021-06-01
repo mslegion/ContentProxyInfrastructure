@@ -23,12 +23,16 @@ class SSHClient:
         except Exception as e:
             raise Exception(f"Trouble connecting to server: {e}")
 
-    def execute_command(self, cmd, prompt=None, timeout=5):
+    def execute_command(self, cmd, prompt=None, timeout=None):
         stdin, stdout, stderr = self.client.exec_command(cmd)
         if prompt:
             stdin.write(f"{prompt}\n")
             stdin.flush()
-            time.sleep(timeout)
+        exit_status = stdout.channel.recv_exit_status()  # Blocking call
+        if exit_status == 0:
+            print(f"Command executed {cmd}")
+        else:
+            print(f"Error executing command {cmd}", exit_status)
         out, err = stdout.read().decode("utf-8"), stderr.read().decode("utf-8")
         return out, err
 

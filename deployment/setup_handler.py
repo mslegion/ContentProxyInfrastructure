@@ -1,3 +1,8 @@
+import json
+import boto3
+import hcl2
+
+
 def display_logs(out, err, cmd):
     if err != "":
         print(f"Warning/Error when running {cmd} command:\n{err}")
@@ -102,3 +107,42 @@ def install_docker(client):
         uninstall_old_docker(client)
         install_docker(client)
         print(f"Docker version is: {out}")
+
+
+def get_terraform_variable_value(var_name):
+    with open('../terraform/variables.tf', 'r') as file:
+        var_dict = hcl2.load(file)
+    value = None
+    for variable in var_dict["variable"]:
+        if var_name in variable:
+            value = variable[var_name]["default"][0]
+    return value
+
+
+def get_aws_server_details():
+    region = get_terraform_variable_value("aws_region")
+    proxy_server_tag = get_terraform_variable_value("proxy_tag")
+
+    with open('secrets.json') as json_file:
+        secrets = json.load(json_file)
+
+    ec2 = boto3.resource(
+        "ec2",
+        aws_access_key_id=secrets["aws_access_key_id"],
+        aws_secret_access_key=secrets["aws_secret_access_key"],
+        region_name=region
+    )
+
+    instances = ec2.instances.filter(
+        Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
+    for instance in instances:
+        name = None
+        for tag in instance.tags:
+            if tag["Key"] == "Name":
+                name = tag["Value"]
+
+        if name == proxy_server_tag:
+            key_pair_name = instance.key_name+".pem"
+            host_name = instance.public_dns_name
+            user_name = "ubuntu"
+            return key_pair_name, host_name, user_name
