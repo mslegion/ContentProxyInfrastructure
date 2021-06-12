@@ -15,5 +15,5 @@ output "user_name" {
 
 output "aws_region" {
   value = var.aws_region
-  description = "The region in which the current instance is present"
+  description = "The region in which the proxy server is present"
 }
