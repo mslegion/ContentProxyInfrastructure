@@ -17,11 +17,8 @@ class SSHClient:
         self.username = username
 
     def connect(self):
-        try:
-            private_key = paramiko.RSAKey.from_private_key_file(self.private_key_file)
-            self.client.connect(hostname=self.host_name, username=self.username, pkey=private_key)
-        except Exception as e:
-            raise Exception(f"Trouble connecting to server: {e}")
+        private_key = paramiko.RSAKey.from_private_key_file(self.private_key_file)
+        self.client.connect(hostname=self.host_name, username=self.username, pkey=private_key)
 
     def execute_command(self, cmd, prompt=None, timeout=None):
         stdin, stdout, stderr = self.client.exec_command(cmd)

@@ -12,8 +12,8 @@ variable "images" {
   type = map(string)
 
   default = {
-    us-east-2 = "ami-00399ec92321828f5"
-    eu-west-2 = "ami-0ad8ecac8af5fc52b"
+    us-east-2 = "ami-00399ec92321828f5" // Ohio
+    eu-west-2 = "ami-0194c3e07668a7e36" // London
   }
 }
 
