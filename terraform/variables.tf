@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "eu-west-2"
+  default = "London"
 }
 
 variable "proxy_tag" {
@@ -14,6 +14,21 @@ variable "images" {
   default = {
     us-east-2 = "ami-00399ec92321828f5" // Ohio
     eu-west-2 = "ami-0194c3e07668a7e36" // London
+    ca-central-1 = "ami-0801628222e2e96d6" // Canada
+    eu-north-1 = "ami-0ff338189efb7ed37" // Stockholm
+    ap-northeast-1 = "ami-0df99b3a8349462c6" // Tokyo
+  }
+}
+
+variable "locations" {
+  type = map(string)
+
+  default = {
+    Ohio = "us-east-2"
+    London =  "eu-west-2"
+    Canada = "ca-central-1"
+    Stockholm = "eu-north-1"
+    Tokyo = "ap-northeast-1"
   }
 }
 

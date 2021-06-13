@@ -1,5 +1,5 @@
 provider "aws" {
-  region = var.aws_region
+  region = lookup(var.locations, var.aws_region)
 }
 
 resource "aws_security_group" "proxy" {
@@ -41,7 +41,8 @@ resource "aws_key_pair" "deployer" {
 }
 
 resource "aws_instance" "ubuntu_server" {
-  ami = lookup(var.images, var.aws_region)
+  ami = lookup(var.images, lookup(var.locations, var.aws_region))
+
   instance_type = "t2.micro"
   key_name = aws_key_pair.deployer.key_name
   security_groups = [aws_security_group.proxy.name, aws_security_group.ssh.name, aws_security_group.all_outbound.name]
