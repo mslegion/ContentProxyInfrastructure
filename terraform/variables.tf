@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "us-east-2"
+  default = "eu-west-2"
 }
 
 variable "proxy_tag" {
@@ -13,6 +13,7 @@ variable "images" {
 
   default = {
     us-east-2 = "ami-00399ec92321828f5"
+    eu-west-2 = "ami-0ad8ecac8af5fc52b"
   }
 }
 

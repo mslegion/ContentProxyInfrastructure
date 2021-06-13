@@ -65,7 +65,7 @@ def compile_maven(client, project_dir):
 
 
 def run_maven(client, project_dir):
-    cmd = f"cd {project_dir}; mvn exec:java -Dexec.mainClass=Main"
+    cmd = f"cd {project_dir}; mvn exec:java -Dexec.mainClass=Main >> logs.txt"
     out, err = client.execute_command(cmd)
     display_logs(out, err, cmd)
 
