@@ -4,7 +4,7 @@ output "key_pair_name" {
 }
 
 output "public_ip" {
-  value       = aws_instance.ubuntu_server.public_dns
+  value       = aws_instance.ubuntu_server.public_ip
   description = "The hostname of the server"
 }
 
