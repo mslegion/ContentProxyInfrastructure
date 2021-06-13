@@ -109,18 +109,28 @@ def install_docker(client):
         print(f"Docker version is: {out}")
 
 
-def get_terraform_variable_value(var_name):
+def get_terraform_variable_value(var_name, map_lookup=False, map_name=None):
     with open('../terraform/variables.tf', 'r') as file:
         var_dict = hcl2.load(file)
     value = None
     for variable in var_dict["variable"]:
         if var_name in variable:
             value = variable[var_name]["default"][0]
+            break
+
+    if map_lookup:
+        for variable in var_dict["variable"]:
+            if map_name in variable:
+                value_map = variable[map_name]["default"][0]
+                value = value_map[value]
+                break
+
     return value
 
 
 def get_aws_server_details():
-    region = get_terraform_variable_value("aws_region")
+    region = get_terraform_variable_value("aws_region", map_lookup=True, map_name="locations")
+
     proxy_server_tag = get_terraform_variable_value("proxy_tag")
 
     with open('secrets.json') as json_file:
