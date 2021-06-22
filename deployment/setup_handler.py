@@ -170,3 +170,9 @@ def get_aws_server_details():
             host_name = instance.public_dns_name
             user_name = "ubuntu"
             return key_pair_name, host_name, user_name
+
+
+def delete_directory(client, directory_name):
+    cmd = f"sudo rm -rf {directory_name}"
+    out, err = client.execute_command(cmd)
+    display_logs(out, err, cmd)

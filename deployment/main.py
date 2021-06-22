@@ -8,6 +8,7 @@ try:
 
     setup_handler.update_get_tools(client)
     setup_handler.install_docker(client)
+    # setup_handler.delete_directory(client, "sitevisitor")
     setup_handler.clone_git_repository(client, "https://github.com/mslegion/sitevisitor.git")
     setup_handler.run_docker_app(client, "sitevisitor")
 
