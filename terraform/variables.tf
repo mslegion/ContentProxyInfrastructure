@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "proxy_tag" {
   type    = string
-  default = "ProxyServer"
+  default = "AppServer"
 }
 
 variable "images" {
