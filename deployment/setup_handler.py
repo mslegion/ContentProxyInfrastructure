@@ -39,7 +39,7 @@ def install_new_docker(client):
     out, err = client.execute_command(cmd, "Y")
     display_logs(out, err, cmd)
 
-    install_docker_compose()
+    install_docker_compose(client)
 
 
 def install_docker_compose(client):
