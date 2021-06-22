@@ -39,6 +39,14 @@ def install_new_docker(client):
     out, err = client.execute_command(cmd, "Y")
     display_logs(out, err, cmd)
 
+    install_docker_compose()
+
+
+def install_docker_compose(client):
+    cmd = "sudo apt-get install docker-compose"
+    out, err = client.execute_command(cmd, "Y")
+    display_logs(out, err, cmd)
+
 
 def clone_git_repository(client, repo_url):
     cmd = f"git clone {repo_url}"
@@ -107,6 +115,12 @@ def install_docker(client):
         uninstall_old_docker(client)
         install_docker(client)
         print(f"Docker version is: {out}")
+
+
+def run_docker_app(client, project_dir):
+    cmd = f"cd {project_dir}; sudo docker-compose up"
+    out, err = client.execute_command(cmd)
+    display_logs(out, err, cmd)
 
 
 def get_terraform_variable_value(var_name, map_lookup=False, map_name=None):
