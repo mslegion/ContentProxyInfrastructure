@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "London"
+  default = "SaoPaulo"
 }
 
 variable "proxy_tag" {
@@ -17,6 +17,7 @@ variable "images" {
     ca-central-1 = "ami-0801628222e2e96d6" // Canada
     eu-north-1 = "ami-0ff338189efb7ed37" // Stockholm
     ap-northeast-1 = "ami-0df99b3a8349462c6" // Tokyo
+    sa-east-1 = "ami-054a31f1b3bf90920" // SaoPaulo
   }
 }
 
@@ -29,6 +30,7 @@ variable "locations" {
     Canada = "ca-central-1"
     Stockholm = "eu-north-1"
     Tokyo = "ap-northeast-1"
+    SaoPaulo = "sa-east-1"
   }
 }
 
