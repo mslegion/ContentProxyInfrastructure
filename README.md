@@ -1,4 +1,4 @@
-# Ingrastrcture-Setup
+# Infrastrcture-Setup
 
 `terrraform` directory contains the terraform code to spin up aws infrastrcutre for the proxy server. 
 
