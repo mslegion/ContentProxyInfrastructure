@@ -18,6 +18,7 @@ variable "images" {
     eu-north-1 = "ami-0ff338189efb7ed37" // Stockholm
     ap-northeast-1 = "ami-0df99b3a8349462c6" // Tokyo
     sa-east-1 = "ami-054a31f1b3bf90920" // SaoPaulo
+    eu-central-1 = "ami-05f7491af5eef733a" // Germany
   }
 }
 
@@ -31,6 +32,7 @@ variable "locations" {
     Stockholm = "eu-north-1"
     Tokyo = "ap-northeast-1"
     SaoPaulo = "sa-east-1"
+    Germany = "eu-central-1"
   }
 }
 
