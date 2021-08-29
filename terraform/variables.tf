@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "proxy_tag" {
   type    = string
-  default = "AppServer"
+  default = "DjangoServer"
 }
 
 variable "images" {
@@ -39,7 +39,7 @@ variable "locations" {
 variable "server_port" {
   description = "The port that proxy server will use for web traffic"
   type        = number
-  default     = 8080
+  default     = 80
 }
 
 variable "ssh_port" {

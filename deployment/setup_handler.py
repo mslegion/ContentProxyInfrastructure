@@ -39,6 +39,14 @@ def install_new_docker(client):
     out, err = client.execute_command(cmd, "Y")
     display_logs(out, err, cmd)
 
+    install_docker_compose(client)
+
+
+def install_docker_compose(client):
+    cmd = "sudo apt-get install docker-compose"
+    out, err = client.execute_command(cmd, "Y")
+    display_logs(out, err, cmd)
+
 
 def clone_git_repository(client, repo_url):
     cmd = f"git clone {repo_url}"
@@ -109,6 +117,12 @@ def install_docker(client):
         print(f"Docker version is: {out}")
 
 
+def run_docker_app(client, project_dir):
+    cmd = f"cd {project_dir}; sudo docker-compose up"
+    out, err = client.execute_command(cmd)
+    display_logs(out, err, cmd)
+
+
 def get_terraform_variable_value(var_name, map_lookup=False, map_name=None):
     with open('../terraform/variables.tf', 'r') as file:
         var_dict = hcl2.load(file)
@@ -156,3 +170,9 @@ def get_aws_server_details():
             host_name = instance.public_dns_name
             user_name = "ubuntu"
             return key_pair_name, host_name, user_name
+
+
+def delete_directory(client, directory_name):
+    cmd = f"sudo rm -rf {directory_name}"
+    out, err = client.execute_command(cmd)
+    display_logs(out, err, cmd)
