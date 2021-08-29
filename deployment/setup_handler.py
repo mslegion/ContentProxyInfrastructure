@@ -142,6 +142,12 @@ def get_terraform_variable_value(var_name, map_lookup=False, map_name=None):
     return value
 
 
+def get_github_token():
+    with open('secrets.json') as json_file:
+        secrets = json.load(json_file)
+    return secrets['github_personal_access_token']
+
+
 def get_aws_server_details():
     region = get_terraform_variable_value("aws_region", map_lookup=True, map_name="locations")
 

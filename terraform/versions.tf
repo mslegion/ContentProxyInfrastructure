@@ -1,8 +1,8 @@
 terraform {
   backend "remote" {
-    organization = "mohammadsaifsabir"
+    organization = "saifsabir"
     workspaces {
-      name = "ContentProxyInfrastructure"
+      name = "portfolio"
     }
   }
   required_providers {
