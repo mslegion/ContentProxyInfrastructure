@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "Canada"
+  default = "Ohio"
 }
 
 variable "proxy_tag" {
