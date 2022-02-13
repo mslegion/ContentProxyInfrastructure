@@ -41,7 +41,7 @@ variable "locations" {
 variable "server_port" {
   description = "The port that proxy server will use for web traffic"
   type        = number
-  default     = 8080
+  default     = 8081
 }
 
 variable "ssh_port" {
