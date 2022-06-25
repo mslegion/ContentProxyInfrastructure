@@ -1,8 +1,9 @@
 terraform {
+  # provide your own terraform state storage details
   backend "remote" {
-    organization = "mohammadsaifsabir"
+    organization = ""
     workspaces {
-      name = "ContentProxyInfrastructure"
+      name = ""
     }
   }
   required_providers {
